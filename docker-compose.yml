@@ -1,0 +1,40 @@
+version: '1'
+
+services:
+
+  app:
+    image: static254/spring-payment-api:1.0.1
+#    build:
+#      context: .
+    container_name: app
+    ports:
+      - 9081:9080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/payment
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Admin12.
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+    links:
+      - db
+    restart: on-failure
+    networks:
+      - banking
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=payment
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Admin12.
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3307:3306
+    networks:
+      - banking
+
+networks:
+  banking:
+    external:
+      name: banking
