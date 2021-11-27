@@ -20,15 +20,15 @@ public class TokenService {
      */
     public Token generateToken(){
 
-        String client_id = "sandbox-admin-279c9b";
-        String client_secret = "30c34234-79ae-4ab3-99af-2887f19f5361";
+         final String  CLIENT_ID = "sandbox-cydeoadmin-62a97f";
+        final String CLIENT_SECRET = "f1799f13-8672-4b00-bb14-7b0faf353d7b";
 
 
         Client currentClient = Client.builder()
                 .grant_type("client_credentials")
                 .scope("payments")
-                .client_id(client_id)
-                .client_secret(client_secret)
+                .client_id(CLIENT_ID)
+                .client_secret(CLIENT_SECRET)
                 .build();
 
         log.info("Test Client provided");

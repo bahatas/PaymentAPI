@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin
 public class AuthenticationController {
 
     /**
@@ -36,7 +36,6 @@ public class AuthenticationController {
     @GetMapping("/token")
     public ResultEnvelope<TokenResponse> getToken() {
 
-
         Token token = tokenService.generateToken();
 
         log.info("Token retrieved");
@@ -46,7 +45,7 @@ public class AuthenticationController {
     }
 
     @GetMapping("/makepayment")
-    public ResponseEntity<ResponseWrapper> getPayment() {
+    public ResultEnvelope<TokenResponse> getPayment() {
 
         String pay_url="https://pay-api.truelayer-sandbox.com/single-immediate-payments";
 
@@ -56,7 +55,7 @@ public class AuthenticationController {
 
         log.info("payment completed");
 
-        return ResponseEntity.ok(new ResponseWrapper("Payment completed successfully",paymentResult));
+        return ResultEnvelope.ok(paymentResult);
     }
 
     @GetMapping("/callback/{id}")

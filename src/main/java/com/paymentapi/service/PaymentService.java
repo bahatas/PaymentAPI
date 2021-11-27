@@ -22,14 +22,14 @@ public class PaymentService {
     public HttpEntity<Object> makePayment() {
 
         PaymentDetails paymentDetails = PaymentDetails.builder()
-                .amount(2)
+                .amount(50)
                 .currency("GBP")
-                .beneficiary_name("Scan To Tip")
+                .beneficiary_name("Cydeo")
                 .beneficiary_reference("pm benef ref")
                 .beneficiary_sort_code(123456)
                 .beneficiary_account_number(12345678)
                 .remitter_reference("pm remit ref")
-                .redirect_uri("https://scantotip.com").build();
+                .redirect_uri("http://localhost:9095/payment/pay").build();
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", "application/json; charset=UTF-8");
@@ -38,5 +38,4 @@ public class PaymentService {
         return new HttpEntity<>(paymentDetails, headers);
 
     }
-
 }
