@@ -1,24 +1,7 @@
-version: '1'
+version: '3.3'
 
 services:
 
-  app:
-    image: static254/spring-payment-api:1.0.1
-#    build:
-#      context: .
-    container_name: app
-    ports:
-      - 9081:9080
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/payment
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Admin12.
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-    links:
-      - db
-    restart: on-failure
-    networks:
-      - paycydeo
 
   db:
     image: postgres
@@ -34,8 +17,3 @@ services:
     restart: always
     ports:
       - 8080:8080
-
-networks:
-  cydeo:
-    external:
-      name: paycydeo

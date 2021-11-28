@@ -20,5 +20,5 @@
 #FROM openjdk:11-jdk-alpine
 FROM maven:3.6.3-jdk-11-openj9 as builder
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+COPY --from=builder /app/target/PaymentAPI-0.0.1*.jar /PaymentAPI-0.0.1.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
