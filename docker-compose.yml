@@ -18,23 +18,24 @@ services:
       - db
     restart: on-failure
     networks:
-      - banking
+      - paycydeo
 
   db:
-    image: mysql:8.0
-    container_name: db
+    image: postgres
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=payment
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=Admin12.
-      - MYSQL_ROOT_HOST=%
+      POSTGRES_PASSWORD: 2754
+      POSTGRES_DB: payment_api
+
+
+
+  adminer:
+    image: adminer
+    restart: always
     ports:
-      - 3307:3306
-    networks:
-      - banking
+      - 8080:8080
 
 networks:
-  banking:
+  cydeo:
     external:
-      name: banking
+      name: paycydeo

@@ -33,6 +33,12 @@ public class AuthenticationController {
     @Autowired
     PaymentService paymentService;
 
+    @GetMapping
+    public String initialresponse(){
+
+        return "WELCOME TO THE CYDEO-PAY API";
+    }
+
     @GetMapping("/token")
     public ResultEnvelope<TokenResponse> getToken() {
 
