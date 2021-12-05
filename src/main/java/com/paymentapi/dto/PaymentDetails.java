@@ -10,12 +10,12 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PaymentDetails {
 
-    private int amount;
+    private Integer amount;
     private String currency;
     private String beneficiary_name;
     private String beneficiary_reference;
-    private int beneficiary_sort_code;
-    private int beneficiary_account_number;
+    private Integer beneficiary_sort_code;
+    private Integer beneficiary_account_number;
     private String remitter_reference;
     private String redirect_uri;
 }

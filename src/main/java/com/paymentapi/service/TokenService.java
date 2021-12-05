@@ -20,7 +20,7 @@ public class TokenService {
      */
     public Token generateToken(){
 
-         final String  CLIENT_ID = "sandbox-cydeoadmin-62a97f";
+        final String  CLIENT_ID = "sandbox-cydeoadmin-62a97f";
         final String CLIENT_SECRET = "f1799f13-8672-4b00-bb14-7b0faf353d7b";
 
 
@@ -31,7 +31,7 @@ public class TokenService {
                 .client_secret(CLIENT_SECRET)
                 .build();
 
-        log.info("Test Client provided");
+        log.info("Test Client Provided");
 
         String TOKEN_URL = "https://auth.truelayer-sandbox.com/connect/token";
         Token token = restTemplate.postForObject(TOKEN_URL, currentClient, Token.class);
