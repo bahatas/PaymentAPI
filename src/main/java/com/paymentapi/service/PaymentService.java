@@ -54,11 +54,13 @@ public class PaymentService {
                 .beneficiary_account_number(12345678)
                 .remitter_reference("pm remit ref")
                 .redirect_uri("http://localhost:9095/payment/makepayment/payment-success").build();
+        log.info("Amount "+ amount+ " provided.");
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", "application/json; charset=UTF-8");
         headers.set("Authorization", "Bearer " + tokenService.generateToken().getAccess_token());
 
+        log.info("Http headers and token provided for payment page");
         return new HttpEntity<>(postAmountObj,headers);
     }
 }

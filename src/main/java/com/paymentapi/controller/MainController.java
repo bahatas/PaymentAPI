@@ -71,8 +71,7 @@ public class MainController {
     @GetMapping("/post-amount/webclient/{amount}")
     public Mono<PaymentResult> makeTransaction(@PathVariable("amount") Integer amount){
 
-        var
-                objectHttpEntity = paymentService.postForPayment(amount);
+        var objectHttpEntity = paymentService.postForPayment(amount);
 
         Mono<PaymentResult> paymentResultMono = webClientBuilder
                 .baseUrl(PAY_URL)
@@ -93,7 +92,7 @@ public class MainController {
 
         PaymentResult paymentResult = restTemplate.postForObject(PAY_URL, objectHttpEntity, PaymentResult.class);
 
-
+        log.info("Payment Details retrieved Successfully");
         return ResultEnvelope.ok(paymentResult) ;
     }
 
